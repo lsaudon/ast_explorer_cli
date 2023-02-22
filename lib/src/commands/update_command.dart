@@ -6,11 +6,7 @@ import 'package:ast_explorer_cli/src/version.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:pub_updater/pub_updater.dart';
 
-/// {@template update_command}
-/// A command which updates the CLI.
-/// {@endtemplate}
 class UpdateCommand extends Command<int> {
-  /// {@macro update_command}
   UpdateCommand({
     required final Logger logger,
     required final PubUpdater pubUpdater,
@@ -23,7 +19,6 @@ class UpdateCommand extends Command<int> {
   @override
   String get description => 'Update the CLI.';
 
-  /// commandName
   static const String commandName = 'update';
 
   @override

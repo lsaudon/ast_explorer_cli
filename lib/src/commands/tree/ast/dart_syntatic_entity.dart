@@ -1,30 +1,20 @@
 import 'dart:convert';
 
 import 'package:analyzer/dart/ast/syntactic_entity.dart';
+import 'package:ast_explorer_cli/src/commands/tree/ast/dart_ast_node.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
-/// DartSyntacticEntity
 class DartSyntacticEntity extends Equatable {
-  /// DartSyntacticEntity
-  const DartSyntacticEntity({
-    required this.offset,
-    required this.end,
-  });
+  const DartSyntacticEntity(this.entity);
 
-  /// DartSyntacticEntity.build
-  DartSyntacticEntity.build(
-    final SyntacticEntity entity,
-  ) : this(
-          offset: entity.offset,
-          end: entity.end,
-        );
+  final SyntacticEntity entity;
 
-  /// DartSyntacticEntity.offset
-  final int offset;
+  int get offset => entity.offset;
 
-  /// DartSyntacticEntity.end
-  final int end;
+  int get end => entity.end;
+
+  String get runtimeType2 => entity.runtimeType.toString();
 
   @override
   List<Object> get props => [
@@ -32,7 +22,6 @@ class DartSyntacticEntity extends Equatable {
         end,
       ];
 
-  /// toJson()
   String toJson() => json.encode(
         Map.fromEntries(
           toMap().entries.toList()
@@ -40,9 +29,9 @@ class DartSyntacticEntity extends Equatable {
         ),
       );
 
-  /// toMap()
   Map<String, dynamic> toMap() => {
         'offset': offset,
         'end': end,
+        'type': runtimeType2,
       };
 }

@@ -8,24 +8,14 @@ import 'package:file/local.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:pub_updater/pub_updater.dart';
 
-/// executableName
 const executableName = 'ast_explorer';
 
-/// packageName
 const packageName = 'ast_explorer_cli';
 
-/// description
 const description = 'A Command-Line Interface for explorer dart ast.';
 
-/// {@template ast_explorer_cli_command_runner}
-/// A [CommandRunner] for the CLI.
 ///
-/// ```
-/// $ ast_explorer --version
-/// ```
-/// {@endtemplate}
 class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
-  /// {@macro ast_explorer_cli_command_runner}
   AstExplorerCliCommandRunner({
     final Logger? logger,
     final PubUpdater? pubUpdater,
@@ -133,9 +123,6 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
     return exitCode;
   }
 
-  /// Checks if the current version (set by the build runner on the
-  /// version.dart file) is the most recent one. If not, show a prompt to the
-  /// user.
   Future<void> _checkForUpdates() async {
     try {
       final latestVersion = await _pubUpdater.getLatestVersion(packageName);
