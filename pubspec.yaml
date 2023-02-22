@@ -1,0 +1,30 @@
+name: ast_explorer_cli
+description: A Command-Line Interface for explorer dart ast.
+version: 0.0.1
+homepage: https://github.com/lsaudon/ast_explorer_cli
+repository: https://github.com/lsaudon/ast_explorer_cli
+issue_tracker: https://github.com/lsaudon/ast_explorer_cli/issues
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  analyzer: ^5.6.0
+  args: ^2.4.0
+  cli_completion: ^0.2.0
+  collection: ^1.17.1
+  equatable: ^2.0.5
+  file: ^6.1.4
+  mason_logger: ^0.2.5
+  path: ^1.8.3
+  pub_updater: ^0.2.4
+
+dev_dependencies:
+  build_runner: ^2.3.3 # 2.4.0 need dart sdk > 3.0.0
+  build_verify: ^3.1.0
+  build_version: ^2.1.1
+  mocktail: ^0.3.0
+  test: ^1.23.1
+
+executables:
+  ast_explorer:
