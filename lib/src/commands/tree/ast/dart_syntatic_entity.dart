@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:analyzer/dart/ast/syntactic_entity.dart';
-import 'package:ast_explorer_cli/src/commands/tree/ast/dart_ast_node.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
