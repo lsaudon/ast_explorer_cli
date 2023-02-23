@@ -6,6 +6,8 @@
 
 A Command-Line Interface for explorer flutter/dart simplified ast.
 
+**The goal is to have the type, name, value, offset and end in the file.**
+
 ---
 
 ## Getting Started 🚀

@@ -9,5 +9,5 @@ class DartSimpleIdentifier extends DartAstNode {
   String get token => _entity.token.lexeme;
 
   @override
-  Map<String, Object?> toMap() => super.toMap()..addAll({'token': token});
+  Map<String, Object?> toMap() => super.toMap()..addAll({'value': token});
 }
