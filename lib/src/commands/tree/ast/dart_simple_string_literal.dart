@@ -13,5 +13,5 @@ class DartSimpleStringLiteral extends DartAstNode {
   String get value => _entity.value;
 
   @override
-  Map<String, dynamic> toMap() => super.toMap()..addAll({'value': value});
+  Map<String, Object?> toMap() => super.toMap()..addAll({'value': value});
 }

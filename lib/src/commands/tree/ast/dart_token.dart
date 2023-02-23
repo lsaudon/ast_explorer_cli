@@ -4,5 +4,5 @@ class DartToken extends DartSyntacticEntity {
   const DartToken(super.entity);
 
   @override
-  Map<String, dynamic> toMap() => {};
+  Map<String, Object?> toMap() => {};
 }

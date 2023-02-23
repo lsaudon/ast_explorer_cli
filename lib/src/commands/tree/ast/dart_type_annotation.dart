@@ -1,6 +1,6 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/element/type.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_ast_node.dart';
+import 'package:ast_explorer_cli/src/commands/tree/ast/dart_dart_type.dart';
 import 'package:ast_explorer_cli/src/extensions/map_extensions.dart';
 
 class DartTypeAnnotation extends DartAstNode {
@@ -9,7 +9,7 @@ class DartTypeAnnotation extends DartAstNode {
   TypeAnnotation get _entity => entity as TypeAnnotation;
 
   String? get question => _entity.question?.stringValue;
-  DartType? get type => _entity.type;
+  DartDartType get type => DartDartType(_entity.type);
   // InstantiatedTypeAliasElement? get alias;
   // Element? get element;
   bool? get isBottom => _entity.type?.isBottom;
@@ -38,11 +38,11 @@ class DartTypeAnnotation extends DartAstNode {
       _entity.type?.getDisplayString(withNullability: true);
 
   @override
-  Map<String, dynamic> toMap() => super.toMap()
+  Map<String, Object?> toMap() => super.toMap()
     ..addEntries(
       [
         MapEntry('question', question),
-        MapEntry('type', type),
+        MapEntry('type', type.toMap()),
         MapEntry('isBottom', isBottom),
         MapEntry('isDartAsyncFuture', isDartAsyncFuture),
         MapEntry('isDartAsyncFutureOr', isDartAsyncFutureOr),
@@ -65,6 +65,6 @@ class DartTypeAnnotation extends DartAstNode {
         MapEntry('isDynamic', isDynamic),
         MapEntry('isVoid', isVoid),
         MapEntry('displayString', displayString),
-      ].whereNotNullAndNotFalse(),
+      ].whereNotNullAndNotFalseAndNotEmptyList(),
     );
 }

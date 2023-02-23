@@ -1,9 +1,12 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
+import 'package:ast_explorer_cli/src/commands/tree/ast/dart_formal_parameter_list.dart';
+import 'package:ast_explorer_cli/src/commands/tree/ast/dart_format_parameter.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_function_declaration.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_import_directive.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_named_compilation_unit_member.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_named_type.dart';
+import 'package:ast_explorer_cli/src/commands/tree/ast/dart_simple_identifier.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_simple_string_literal.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_syntatic_entity.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_token.dart';
@@ -16,17 +19,26 @@ class DartAstNode extends DartSyntacticEntity {
   Iterable<DartSyntacticEntity> get childEntities =>
       (entity as AstNode).childEntities.map((final e) {
         if (e is AstNode) {
+          if (e is FormalParameterList) {
+            return DartFormalParameterList(e);
+          }
+          if (e is FormalParameter) {
+            return DartFormalParameter(e);
+          }
+          if (e is ImportDirective) {
+            return DartImportDirective(e);
+          }
           if (e is NamedCompilationUnitMember) {
             if (e is FunctionDeclaration) {
               return DartFunctionDeclaration(e);
             }
             return DartNamedCompilationUnitMember(e);
           }
+          if (e is SimpleIdentifier) {
+            return DartSimpleIdentifier(e);
+          }
           if (e is SimpleStringLiteral) {
             return DartSimpleStringLiteral(e);
-          }
-          if (e is ImportDirective) {
-            return DartImportDirective(e);
           }
           if (e is TypeAnnotation) {
             if (e is NamedType) {
@@ -43,7 +55,7 @@ class DartAstNode extends DartSyntacticEntity {
       });
 
   @override
-  Map<String, dynamic> toMap() {
+  Map<String, Object?> toMap() {
     final list = childEntities
         .map((final e) => e.toMap())
         .where((final e) => e.isNotEmpty)
@@ -57,7 +69,7 @@ class DartAstNode extends DartSyntacticEntity {
               'childEntities',
               list,
             )
-        ].whereNotNullAndNotFalse(),
+        ].whereNotNullAndNotFalseAndNotEmptyList(),
       );
   }
 }

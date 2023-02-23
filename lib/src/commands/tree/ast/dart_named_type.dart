@@ -12,12 +12,12 @@ class DartNamedType extends DartTypeAnnotation {
   NodeList<TypeAnnotation>? get arguments => _entity.typeArguments?.arguments;
 
   @override
-  Map<String, dynamic> toMap() => super.toMap()
+  Map<String, Object?> toMap() => super.toMap()
     ..addEntries(
       [
         MapEntry('isDeferred', isDeferred),
         MapEntry('name', name.toString()),
         MapEntry('arguments', arguments.toString()),
-      ].whereNotNullAndNotFalse(),
+      ].whereNotNullAndNotFalseAndNotEmptyList(),
     );
 }

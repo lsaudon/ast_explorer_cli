@@ -13,13 +13,13 @@ class DartImportDirective extends DartAstNode {
   String? get prefix => _entity.prefix?.name;
 
   @override
-  Map<String, dynamic> toMap() => super.toMap()
+  Map<String, Object?> toMap() => super.toMap()
     ..addEntries(
       [
         MapEntry('asKeyword', asKeyword),
         MapEntry('deferredKeyword', deferredKeyword),
         MapEntry('importKeyword', importKeyword),
         MapEntry('prefix', prefix),
-      ].whereNotNullAndNotFalse(),
+      ].whereNotNullAndNotFalseAndNotEmptyList(),
     );
 }

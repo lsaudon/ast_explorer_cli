@@ -28,7 +28,7 @@ class DartSyntacticEntity extends Equatable {
         ),
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<String, Object?> toMap() => {
         'offset': offset,
         'end': end,
         'type': runtimeType2,

@@ -8,8 +8,8 @@ class DartNamedCompilationUnitMember extends DartAstNode {
   String? get name => (entity as NamedCompilationUnitMember).name.stringValue;
 
   @override
-  Map<String, dynamic> toMap() => super.toMap()
+  Map<String, Object?> toMap() => super.toMap()
     ..addEntries(
-      [MapEntry('name', name)].whereNotNullAndNotFalse(),
+      [MapEntry('name', name)].whereNotNullAndNotFalseAndNotEmptyList(),
     );
 }

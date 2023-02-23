@@ -11,7 +11,8 @@ class DartFunctionDeclaration extends DartNamedCompilationUnitMember {
 
   String? get externalKeyword => _entity.externalKeyword?.stringValue;
 
-  FunctionExpression get functionExpression => _entity.functionExpression;
+  FunctionExpression get functionExpression =>
+      _entity.functionExpression; // TODO(lsaudon): FunctionExpression
 
   bool get isGetter => _entity.isGetter;
 
@@ -19,10 +20,11 @@ class DartFunctionDeclaration extends DartNamedCompilationUnitMember {
 
   String? get propertyKeyword => _entity.propertyKeyword?.stringValue;
 
-  TypeAnnotation? get returnType => _entity.returnType;
+  TypeAnnotation? get returnType =>
+      _entity.returnType; // TODO(lsaudon): TypeAnnotation
 
   @override
-  Map<String, dynamic> toMap() => super.toMap()
+  Map<String, Object?> toMap() => super.toMap()
     ..addEntries(
       [
         MapEntry('externalKeyword', externalKeyword),
@@ -30,6 +32,6 @@ class DartFunctionDeclaration extends DartNamedCompilationUnitMember {
         MapEntry('isSetter', isSetter),
         MapEntry('propertyKeyword', propertyKeyword),
         MapEntry('returnType', returnType.toString()),
-      ].whereNotNullAndNotFalse(),
+      ].whereNotNullAndNotFalseAndNotEmptyList(),
     );
 }
