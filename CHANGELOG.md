@@ -1,4 +1,4 @@
-## Future release
+## 0.1.0
 
 - ✨ Show method name
 
