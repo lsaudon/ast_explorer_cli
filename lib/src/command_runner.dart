@@ -8,14 +8,18 @@ import 'package:file/local.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:pub_updater/pub_updater.dart';
 
+/// executableName
 const executableName = 'ast_explorer';
 
+/// packageName
 const packageName = 'ast_explorer_cli';
 
+/// description
 const description = 'A Command-Line Interface for explorer dart ast.';
 
-///
+/// AstExplorerCliCommandRunner
 class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
+  /// Constructor of AstExplorerCliCommandRunner
   AstExplorerCliCommandRunner({
     final Logger? logger,
     final PubUpdater? pubUpdater,
@@ -24,7 +28,6 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
         _pubUpdater = pubUpdater ?? PubUpdater(),
         _fileSystem = fileSystem ?? const LocalFileSystem(),
         super(executableName, description) {
-    // Add root options and flags
     argParser
       ..addFlag(
         'version',
@@ -37,7 +40,6 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
         help: 'Noisy logging, including all shell commands executed.',
       );
 
-    // Add sub commands
     addCommand(TreeCommand(logger: _logger, fileSystem: _fileSystem));
     addCommand(UpdateCommand(logger: _logger, pubUpdater: _pubUpdater));
   }
@@ -58,8 +60,6 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
       }
       return await runCommand(topLevelResults) ?? ExitCode.success.code;
     } on FormatException catch (e, stackTrace) {
-      // On format errors, show the commands error message, root usage and
-      // exit with an error code
       _logger
         ..err(e.message)
         ..err('$stackTrace')
@@ -67,8 +67,6 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
         ..info(usage);
       return ExitCode.usage.code;
     } on UsageException catch (e) {
-      // On usage errors, show the commands usage message and
-      // exit with an error code
       _logger
         ..err(e.message)
         ..info('')
@@ -79,13 +77,11 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
 
   @override
   Future<int?> runCommand(final ArgResults topLevelResults) async {
-    // Fast track completion command
     if (topLevelResults.command?.name == 'completion') {
       await super.runCommand(topLevelResults);
       return ExitCode.success.code;
     }
 
-    // Verbose logs
     _logger
       ..detail('Argument information:')
       ..detail('  Top level options:');
@@ -106,7 +102,6 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
       }
     }
 
-    // Run the command or show version
     final int? exitCode;
     if (topLevelResults['version'] == true) {
       _logger.info(packageVersion);
@@ -115,7 +110,6 @@ class AstExplorerCliCommandRunner extends CompletionCommandRunner<int> {
       exitCode = await super.runCommand(topLevelResults);
     }
 
-    // Check for updates
     if (topLevelResults.command?.name != UpdateCommand.commandName) {
       await _checkForUpdates();
     }

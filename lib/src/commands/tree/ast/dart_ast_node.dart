@@ -3,9 +3,12 @@ import 'package:analyzer/dart/ast/token.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_syntatic_entity.dart';
 import 'package:ast_explorer_cli/src/commands/tree/ast/dart_token.dart';
 
+/// DartAstNode
 class DartAstNode extends DartSyntacticEntity {
+  /// Constructor of DartAstNode
   const DartAstNode(super.entity);
 
+  /// childEntities
   Iterable<DartSyntacticEntity> get childEntities =>
       (entity as AstNode).childEntities.map((final e) {
         if (e is AstNode) {

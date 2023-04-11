@@ -5,7 +5,9 @@ import 'package:file/file.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:path/path.dart' as p;
 
+/// TreeCommand
 class TreeCommand extends Command<int> {
+  /// Constructor of TreeCommand
   TreeCommand({
     required final Logger logger,
     required final FileSystem fileSystem,
@@ -18,6 +20,7 @@ class TreeCommand extends Command<int> {
   @override
   String get description => 'Ast tree';
 
+  /// commandName
   static const String commandName = 'tree';
 
   @override
