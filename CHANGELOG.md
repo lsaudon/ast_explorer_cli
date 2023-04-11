@@ -1,3 +1,7 @@
+## 0.1.2
+
+- 📝 Add api docs
+
 ## 0.1.0
 
 - ✨ Show method name

@@ -1,6 +1,6 @@
 name: ast_explorer_cli
 description: A Command-Line Interface for explorer flutter/dart simplified ast.
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/lsaudon/ast_explorer_cli
 repository: https://github.com/lsaudon/ast_explorer_cli
 issue_tracker: https://github.com/lsaudon/ast_explorer_cli/issues
