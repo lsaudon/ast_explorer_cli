@@ -1,3 +1,7 @@
+## 0.2.0
+
+- ⬆️ Dart 3 & dependencies
+
 ## 0.1.2
 
 - 📝 Add api docs
