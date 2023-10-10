@@ -34,7 +34,7 @@ class DartAstNode extends DartSyntacticEntity {
             MapEntry(
               'childEntities',
               list,
-            )
+            ),
         ],
       );
   }
