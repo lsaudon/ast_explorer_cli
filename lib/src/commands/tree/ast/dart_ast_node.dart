@@ -28,14 +28,6 @@ class DartAstNode extends DartSyntacticEntity {
         .toList();
 
     return super.toMap()
-      ..addEntries(
-        [
-          if (list.isNotEmpty)
-            MapEntry(
-              'childEntities',
-              list,
-            ),
-        ],
-      );
+      ..addEntries([if (list.isNotEmpty) MapEntry('childEntities', list)]);
   }
 }

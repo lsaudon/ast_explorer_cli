@@ -11,8 +11,8 @@ class TreeCommand extends Command<int> {
   TreeCommand({
     required final Logger logger,
     required final FileSystem fileSystem,
-  })  : _logger = logger,
-        _fileSystem = fileSystem;
+  }) : _logger = logger,
+       _fileSystem = fileSystem;
 
   final Logger _logger;
   final FileSystem _fileSystem;

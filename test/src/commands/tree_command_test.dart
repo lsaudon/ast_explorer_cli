@@ -20,8 +20,9 @@ void main() {
 
   setUp(() {
     fileSystem = MemoryFileSystem.test(
-      style:
-          Platform.isWindows ? FileSystemStyle.windows : FileSystemStyle.posix,
+      style: Platform.isWindows
+          ? FileSystemStyle.windows
+          : FileSystemStyle.posix,
     );
     logger = _MockLogger();
     commandRunner = AstExplorerCliCommandRunner(
@@ -35,8 +36,10 @@ void main() {
       ..createSync(recursive: true)
       ..writeAsStringSync(inputContent);
 
-    final exitCode =
-        await commandRunner.run([TreeCommand.commandName, 'main.dart']);
+    final exitCode = await commandRunner.run([
+      TreeCommand.commandName,
+      'main.dart',
+    ]);
 
     verify(() => logger.info(output));
 

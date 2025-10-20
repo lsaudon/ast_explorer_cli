@@ -22,23 +22,20 @@ class DartSyntacticEntity extends Equatable {
   String get runtimeType2 => entity.runtimeType.toString();
 
   @override
-  List<Object> get props => [
-        offset,
-        end,
-      ];
+  List<Object> get props => [offset, end];
 
   /// toJson
   String toJson() => json.encode(
-        Map.fromEntries(
-          toMap().entries.toList()
-            ..sort((final a, final b) => compareNatural(a.key, b.key)),
-        ),
-      );
+    Map.fromEntries(
+      toMap().entries.toList()
+        ..sort((final a, final b) => compareNatural(a.key, b.key)),
+    ),
+  );
 
   /// toMap
   Map<String, Object?> toMap() => {
-        'offset': offset,
-        'end': end,
-        'type': runtimeType2,
-      };
+    'offset': offset,
+    'end': end,
+    'type': runtimeType2,
+  };
 }

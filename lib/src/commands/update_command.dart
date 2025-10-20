@@ -12,8 +12,8 @@ class UpdateCommand extends Command<int> {
   UpdateCommand({
     required final Logger logger,
     required final PubUpdater pubUpdater,
-  })  : _logger = logger,
-        _pubUpdater = pubUpdater;
+  }) : _logger = logger,
+       _pubUpdater = pubUpdater;
 
   final Logger _logger;
   final PubUpdater _pubUpdater;
